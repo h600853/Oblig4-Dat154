@@ -13,5 +13,15 @@ namespace Oblig4
         {
 
         }
+
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BookRoomButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
