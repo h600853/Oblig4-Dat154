@@ -1,0 +1,21 @@
+
+Første utkast:
+Login (brukernavn og passord)
+
+Søke etter rom? (med booking integrert) // Husk at det også skal gå i en database
+	størrelse
+	antall senger
+	Rom  Type (kombo mellom størrelse og antall senger) (merge coloms)
+	kvalitet?
+	pris
+	antall dager for reservasjon (må ha en sjekk for hvilke rom som er ledig når)(Kan være lurt med maks antall dager)
+	får opplyst antall personer det er plass til når man bestiller rommet
+	book rom eller rommene mulighet og knapper (Handlekurv kan være grei å ha her)
+	//Kan være lurt å ha en knapp for å gå tilbake til søk etter rom fra handlekurv
+
+	Designmessig kan det være en god ide å ha velg kriterier bokser øverst med ulike romforslag med bilder under
+	i et rutenett med de forskjellige typene rom. Komplisert ide, men boksene man bruker for å "søke etter rom" er grei
+	
+	Søker etter rom pris, antall senger(antell personer), størrelse, kvalitet, antall dager
+	
+	Se eventelt prisjakt etter forskjellig typer design for priser
