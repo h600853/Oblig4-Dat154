@@ -23,3 +23,5 @@ Søke etter rom? (med booking integrert) // Husk at det også skal gå i en databas
 Eventuell inndeling for arbeid på det over:
 to sammen?
 hver for seg?
+to tar login:
+to begynner på booking:
