@@ -1,4 +1,5 @@
 
+Husk at design tegninger bør legges inn på git til oss også!!!
 Første utkast:
 Login (brukernavn og passord)
 
