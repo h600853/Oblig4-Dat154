@@ -19,3 +19,7 @@ Søke etter rom? (med booking integrert) // Husk at det også skal gå i en databas
 	Søker etter rom pris, antall senger(antell personer), størrelse, kvalitet, antall dager
 	
 	Se eventelt prisjakt etter forskjellig typer design for priser
+
+Eventuell inndeling for arbeid på det over:
+to sammen?
+hver for seg?
