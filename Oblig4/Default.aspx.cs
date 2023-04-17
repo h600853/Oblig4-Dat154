@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +11,7 @@ namespace Oblig4
     public partial class _Default : Page
     {
 
-
+        MinDatabaseEntities db = new MinDatabaseEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,8 +24,10 @@ namespace Oblig4
       
             //Tidligeste du kan sjekke ut er dagen etter i dag
             CheckOutValidator.MinimumValue = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
-            
-           
+            var rooms = db.Room.OrderBy(r => r.roomnumber).ToList();
+            GridView1.DataSource = db.Room.Local;
+            GridView1.DataBind();
+
             
         }
 
