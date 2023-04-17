@@ -60,7 +60,7 @@ namespace Oblig4
         protected global::System.Web.UI.WebControls.Label passordLabel;
 
         /// <summary>
-        /// TextBox2 control.
+        /// passordTekstBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

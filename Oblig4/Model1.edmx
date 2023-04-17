@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MinDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MinDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="FromDate" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ToDate" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Person" Type="int" Nullable="false" />
+          <Property Name="Room" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Room">
           <Key>
             <PropertyRef Name="roomnumber" />
@@ -14,11 +24,52 @@
           <Property Name="numberofbeds" Type="int" />
           <Property Name="price" Type="int" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Reservati__Perso__6477ECF3">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservatio__Room__656C112C">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomnumber" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MinDatabaseModelStoreContainer">
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Reservati__Perso__6477ECF3" Association="Self.FK__Reservati__Perso__6477ECF3">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservatio__Room__656C112C" Association="Self.FK__Reservatio__Room__656C112C">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MinDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -30,10 +81,66 @@
           <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="numberofbeds" Type="Int32" />
           <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="Reservation" Relationship="MinDatabaseModel.FK__Reservatio__Room__656C112C" FromRole="Room" ToRole="Reservation" />
         </EntityType>
         <EntityContainer Name="MinDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="Reservation" EntityType="MinDatabaseModel.Reservation" />
+          <EntitySet Name="Users" EntityType="MinDatabaseModel.Users" />
+          <AssociationSet Name="FK__Reservati__Perso__6477ECF3" Association="MinDatabaseModel.FK__Reservati__Perso__6477ECF3">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservatio__Room__656C112C" Association="MinDatabaseModel.FK__Reservatio__Room__656C112C">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="FromDate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ToDate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Person" Type="Int32" Nullable="false" />
+          <Property Name="Room" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="MinDatabaseModel.FK__Reservati__Perso__6477ECF3" FromRole="Reservation" ToRole="Users" />
+          <NavigationProperty Name="Room1" Relationship="MinDatabaseModel.FK__Reservatio__Room__656C112C" FromRole="Reservation" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservation" Relationship="MinDatabaseModel.FK__Reservati__Perso__6477ECF3" FromRole="Users" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="FK__Reservati__Perso__6477ECF3">
+          <End Type="MinDatabaseModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="MinDatabaseModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservatio__Room__656C112C">
+          <End Type="MinDatabaseModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="MinDatabaseModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomnumber" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -47,6 +154,26 @@
                 <ScalarProperty Name="size" ColumnName="size" />
                 <ScalarProperty Name="numberofbeds" ColumnName="numberofbeds" />
                 <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="MinDatabaseModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MinDatabaseModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

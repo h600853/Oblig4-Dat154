@@ -26,5 +26,7 @@ namespace Oblig4
         }
     
         public virtual DbSet<Room> Room { get; set; }
+        public virtual DbSet<Reservation> Reservation { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

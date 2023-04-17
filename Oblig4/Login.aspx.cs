@@ -27,5 +27,15 @@ namespace Oblig4
                 Response.Redirect("~/Default.aspx");
             } 
         }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void passordTekstBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
