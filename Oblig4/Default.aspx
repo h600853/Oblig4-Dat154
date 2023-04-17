@@ -15,19 +15,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <br />
        <asp:DropDownList ID="sizeDropDownList" runat="server">
-           <asp:ListItem>Big</asp:ListItem>
-           <asp:ListItem>Small</asp:ListItem>
+           
        </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;
        <asp:DropDownList ID="bedsDropDownList" runat="server" Width="119px">
-           <asp:ListItem Value="1"></asp:ListItem>
-           <asp:ListItem>2</asp:ListItem>
+         
        </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;
        <asp:DropDownList ID="DropDownList3" runat="server">
-           <asp:ListItem>High</asp:ListItem>
-           <asp:ListItem>Medium</asp:ListItem>
-           <asp:ListItem>Low</asp:ListItem>
+           
        </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;
        <asp:TextBox ID="checkInTextBox" runat="server" OnTextChanged="fraDatoTekstBox_TextChanged"></asp:TextBox>
