@@ -45,6 +45,8 @@
        <asp:Label ID="Label5" runat="server" Text="Available Rooms: "></asp:Label>
        <br />
        <br />
+       <asp:GridView ID="GridView1" runat="server" Height="342px" Width="732px">
+       </asp:GridView>
        <br />
        <br />
        <br />
