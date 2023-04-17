@@ -20,7 +20,6 @@ namespace Oblig4
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Validate();
 
             if (IsValid)
             {
@@ -30,12 +29,12 @@ namespace Oblig4
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
-
+            Validate();
         }
 
         protected void passordTekstBox_TextChanged(object sender, EventArgs e)
         {
-
+            Validate();
         }
     }
 }
