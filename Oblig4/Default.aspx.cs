@@ -16,19 +16,17 @@ namespace Oblig4
         String PriceRange1 = "50-80";
         String PriceRange2 = "80-100";
         String PriceRange3 = "100-150";
-        String SelectedSize = "";
-        int SelectedBeds = 0;
-        String selectedPriceRange = "";
-        
-        protected void Page_Load(object sender, EventArgs e)
+        String SelectedSize = "Small";
+        int SelectedBeds = 1;
+        String selectedPriceRange = "50-80";
+       
+
+        protected void Page_Init(object sender, EventArgs e)
         {
-
-
-
-            //Kan tidligest Booke i dag
+            
             CheckInValidator.MinimumValue = DateTime.Now.ToString("yyyy-MM-dd");
-          
-      
+
+
             //Tidligeste du kan sjekke ut er dagen etter i dag
             CheckOutValidator.MinimumValue = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
             var rooms = db.Room.OrderBy(r => r.roomnumber).ToList();
@@ -59,6 +57,20 @@ namespace Oblig4
             sizeDropDownList.SelectedIndexChanged += SizeDropDownList_SelectedIndexChanged;
             bedsDropDownList.SelectedIndexChanged += BedsDropDownList_SelectedIndexChanged;
             DropDownList3.SelectedIndexChanged += DropDownList3_SelectedIndexChanged;
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+
+
+            //Kan tidligest Booke i dag
+            CheckInValidator.MinimumValue = DateTime.Now.ToString("yyyy-MM-dd");
+          
+      
+            //Tidligeste du kan sjekke ut er dagen etter i dag
+            CheckOutValidator.MinimumValue = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+        
+
             
         }
 
@@ -88,6 +100,13 @@ namespace Oblig4
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
+            var selectedRooms = from room in db.Room
+                                where room.size == SelectedSize
+                                select room;
+
+                GridView1.DataSource = selectedRooms.ToList();
+                GridView1.DataBind();   
+            
 
         }
 
