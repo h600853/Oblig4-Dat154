@@ -16,9 +16,9 @@ namespace Oblig4
         String PriceRange1 = "50-80";
         String PriceRange2 = "80-100";
         String PriceRange3 = "100-150";
-        String SelectedSize = "Small";
-        int SelectedBeds = 1;
-        String selectedPriceRange = "50-80";
+        String SelectedSize = "";
+        int SelectedBeds = 0;
+        String selectedPriceRange = "";
        
 
         protected void Page_Init(object sender, EventArgs e)
@@ -37,6 +37,7 @@ namespace Oblig4
             var roomsize = db.Room.Select(r => r.size).OrderBy(r => r).Distinct().ToList();
             roomsize.Reverse();
             sizeDropDownList.Items.Clear();
+            sizeDropDownList.Items.Add("");
             foreach (var size in roomsize)
             {
                 sizeDropDownList.Items.Add(new ListItem(size, size));
@@ -44,12 +45,14 @@ namespace Oblig4
             sizeDropDownList.DataBind();
             //beds drop down list
             var roombeds = db.Room.Select(r => r.numberofbeds).OrderBy(r => r).Distinct().ToList();
+            bedsDropDownList.Items.Add(""); 
             foreach (var bed in roombeds)
             {
                 bedsDropDownList.Items.Add(new ListItem(bed.ToString(), bed.ToString()));
             }
             bedsDropDownList.DataBind();
             //prices drop down list
+            DropDownList3.Items.Add("");    
             DropDownList3.Items.Add(new ListItem(PriceRange1, PriceRange1));
             DropDownList3.Items.Add(new ListItem(PriceRange2, PriceRange2));
             DropDownList3.Items.Add(new ListItem(PriceRange3, PriceRange3));
@@ -100,12 +103,23 @@ namespace Oblig4
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
+            int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
+            int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
+
             var selectedRooms = from room in db.Room
                                 where room.size == SelectedSize
+                                where room.numberofbeds == SelectedBeds
+                                where room.price >= minPrice
+                                where room.price <= maxPrice
                                 select room;
 
-                GridView1.DataSource = selectedRooms.ToList();
+
+            GridView1.DataSource = selectedRooms.ToList();
                 GridView1.DataBind();   
+
+            bedsDropDownList.SelectedIndex = 0;
+            sizeDropDownList.SelectedIndex = 0;
+            DropDownList3.SelectedIndex = 0;
             
 
         }
