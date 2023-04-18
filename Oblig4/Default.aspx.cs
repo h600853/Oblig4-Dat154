@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Common;
-using System.Diagnostics;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,12 +15,12 @@ namespace Oblig4
         String SelectedSize = "";
         int SelectedBeds = 0;
         String selectedPriceRange = "";
-       
-       
+
+
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            
+
             CheckInValidator.MinimumValue = DateTime.Now.ToString("yyyy-MM-dd");
 
 
@@ -46,14 +42,14 @@ namespace Oblig4
             sizeDropDownList.DataBind();
             //beds drop down list
             var roombeds = db.Room.Select(r => r.numberofbeds).OrderBy(r => r).Distinct().ToList();
-            bedsDropDownList.Items.Add(""); 
+            bedsDropDownList.Items.Add("");
             foreach (var bed in roombeds)
             {
                 bedsDropDownList.Items.Add(new ListItem(bed.ToString(), bed.ToString()));
             }
             bedsDropDownList.DataBind();
             //prices drop down list
-            DropDownList3.Items.Add("");    
+            DropDownList3.Items.Add("");
             DropDownList3.Items.Add(new ListItem(PriceRange1, PriceRange1));
             DropDownList3.Items.Add(new ListItem(PriceRange2, PriceRange2));
             DropDownList3.Items.Add(new ListItem(PriceRange3, PriceRange3));
@@ -69,13 +65,13 @@ namespace Oblig4
 
             //Kan tidligest Booke i dag
             CheckInValidator.MinimumValue = DateTime.Now.ToString("yyyy-MM-dd");
-          
-      
+
+
             //Tidligeste du kan sjekke ut er dagen etter i dag
             CheckOutValidator.MinimumValue = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
-        
 
-            
+
+
         }
 
 
@@ -104,54 +100,77 @@ namespace Oblig4
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
-            if (SelectedBeds != 0 && selectedPriceRange != "" &&  SelectedSize != "")
+            if (SelectedBeds != 0 && selectedPriceRange != "" && SelectedSize != "")
             {
 
-            int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
-            int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
+                int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
+                int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
 
-            var selectedRooms = from room in db.Room
-                                where room.size == SelectedSize
-                                where room.numberofbeds == SelectedBeds
-                                where room.price >= minPrice
-                                where room.price <= maxPrice
-                                where room.Available == true
-                                select room;
+                var selectedRooms = from room in db.Room
+                                    where room.size == SelectedSize
+                                    where room.numberofbeds == SelectedBeds
+                                    where room.price >= minPrice
+                                    where room.price <= maxPrice
+                                    where room.Available == true
+                                    select room;
 
 
-            GridView1.DataSource = selectedRooms.ToList();
-                GridView1.DataBind();   
+                GridView1.DataSource = selectedRooms.ToList();
+                GridView1.DataBind();
 
-            bedsDropDownList.SelectedIndex = 0;
-            sizeDropDownList.SelectedIndex = 0;
-            DropDownList3.SelectedIndex = 0;
+                bedsDropDownList.SelectedIndex = 0;
+                sizeDropDownList.SelectedIndex = 0;
+                DropDownList3.SelectedIndex = 0;
             }
-            
+
 
         }
+
+
+        public Boolean RoomNumberExsist(int roomNr)
+        {
+            var room = db.Room.Where(r => r.roomnumber == roomNr).FirstOrDefault();
+            if (room != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         protected void BookRoomButton_Click(object sender, EventArgs e)
         {
-            //make a new reservation
-           
-            Reservation reservation = new Reservation();
-            reservation.FromDate = checkInTextBox.Text;
-            reservation.ToDate = checkOutTextBox.Text;
-            reservation.Room = int.Parse(RoomTextBox.Text);
-            //save in database
-            db.Reservation.Add(reservation);
-            db.SaveChanges();
-            //update room to unavailable
-            var room = db.Room.Where(r => r.roomnumber == int.Parse(RoomTextBox.Text)).FirstOrDefault();
-            room.Available = false;
-            db.SaveChanges();
-            //update gridview
-            GridView1.DataSource = db.Room;
-            GridView1.DataBind();
+            var roomnumber = int.Parse(RoomTextBox.Text);
+            if (RoomNumberExsist(roomnumber))
+            {
+                //make a new reservation
+                Reservation reservation = new Reservation();
+                reservation.FromDate = checkInTextBox.Text;
+                reservation.ToDate = checkOutTextBox.Text;
+                reservation.Room = int.Parse(RoomTextBox.Text);
+                //save in database
+                db.Reservation.Add(reservation);
+                db.SaveChanges();
+                //update room to unavailable
+                var room = db.Room.Where(r => r.roomnumber == int.Parse(RoomTextBox.Text)).FirstOrDefault();
+                room.Available = false;
+                db.SaveChanges();
+                //update gridview
+                GridView1.DataSource = db.Room;
+                GridView1.DataBind();
+                errorMessage.Visible = false;
             }
-
-
+            else
+            {
+                errorMessage.Visible = true;
+            }
         }
 
-        
+
     }
+
+
+}
