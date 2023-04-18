@@ -24,6 +24,7 @@ namespace Oblig4
         public string size { get; set; }
         public Nullable<int> numberofbeds { get; set; }
         public Nullable<int> price { get; set; }
+        public Nullable<bool> Available { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservation { get; set; }

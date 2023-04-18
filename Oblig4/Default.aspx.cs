@@ -115,6 +115,7 @@ namespace Oblig4
                                 where room.numberofbeds == SelectedBeds
                                 where room.price >= minPrice
                                 where room.price <= maxPrice
+                                where room.Available == true
                                 select room;
 
 
@@ -139,6 +140,10 @@ namespace Oblig4
             reservation.Room = int.Parse(RoomTextBox.Text);
             //save in database
             db.Reservation.Add(reservation);
+            db.SaveChanges();
+            //update room to unavailable
+            var room = db.Room.Where(r => r.roomnumber == int.Parse(RoomTextBox.Text)).FirstOrDefault();
+            room.Available = false;
             db.SaveChanges();
             //update gridview
             GridView1.DataSource = db.Room;

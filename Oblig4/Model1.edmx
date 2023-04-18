@@ -23,6 +23,7 @@
           <Property Name="size" Type="varchar" MaxLength="50" />
           <Property Name="numberofbeds" Type="int" />
           <Property Name="price" Type="int" />
+          <Property Name="Available" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -82,6 +83,7 @@
           <Property Name="numberofbeds" Type="Int32" />
           <Property Name="price" Type="Int32" />
           <NavigationProperty Name="Reservation" Relationship="MinDatabaseModel.FK__Reservatio__Room__656C112C" FromRole="Room" ToRole="Reservation" />
+          <Property Name="Available" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="MinDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Room" EntityType="Self.Room" />
@@ -150,6 +152,7 @@
           <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="MinDatabaseModel.Room">
               <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Available" ColumnName="Available" />
                 <ScalarProperty Name="roomnumber" ColumnName="roomnumber" />
                 <ScalarProperty Name="size" ColumnName="size" />
                 <ScalarProperty Name="numberofbeds" ColumnName="numberofbeds" />
