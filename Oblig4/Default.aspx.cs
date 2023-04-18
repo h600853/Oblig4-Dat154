@@ -20,6 +20,7 @@ namespace Oblig4
         int SelectedBeds = 0;
         String selectedPriceRange = "";
        
+       
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -103,6 +104,9 @@ namespace Oblig4
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
+            if (SelectedBeds != 0 && selectedPriceRange != "" &&  SelectedSize != "")
+            {
+
             int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
             int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
 
@@ -120,13 +124,29 @@ namespace Oblig4
             bedsDropDownList.SelectedIndex = 0;
             sizeDropDownList.SelectedIndex = 0;
             DropDownList3.SelectedIndex = 0;
+            }
             
 
         }
 
         protected void BookRoomButton_Click(object sender, EventArgs e)
         {
+            //make a new reservation
+           
+            Reservation reservation = new Reservation();
+            reservation.FromDate = checkInTextBox.Text;
+            reservation.ToDate = checkOutTextBox.Text;
+            reservation.Room = int.Parse(RoomTextBox.Text);
+            //save in database
+            db.Reservation.Add(reservation);
+            db.SaveChanges();
+            //update gridview
+            GridView1.DataSource = db.Room;
+            GridView1.DataBind();
+            }
+
 
         }
+
+        
     }
-}

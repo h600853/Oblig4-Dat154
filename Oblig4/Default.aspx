@@ -11,9 +11,10 @@
        <asp:Label ID="priceLabel" runat="server" Text="Price"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="checkInLabel" runat="server" Text="Check-In Date"></asp:Label>
        &nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
        <asp:Label ID="checkOutLabel" runat="server" Text="Check-Out Date"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <asp:Label ID="Label6" runat="server" Text="RoomNumber"></asp:Label>
        <br />
        <asp:DropDownList ID="sizeDropDownList" runat="server">
            
@@ -29,11 +30,13 @@
 &nbsp;&nbsp;&nbsp;
        <asp:TextBox ID="checkInTextBox" runat="server" OnTextChanged="fraDatoTekstBox_TextChanged"></asp:TextBox>
 &nbsp;<asp:TextBox ID="checkOutTextBox" runat="server" OnTextChanged="tilDatoTekstBox_TextChanged"></asp:TextBox>
+       &nbsp;&nbsp;<asp:TextBox ID="RoomTextBox" runat="server"></asp:TextBox>
        &nbsp;&nbsp;
-&nbsp;&nbsp;<asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" Width="90px" />
-       &nbsp;
-       <asp:Button ID="BookRoomButton" runat="server" OnClick="BookRoomButton_Click" Text="Book Room" Width="128px" />
        <br />
+       <br />
+       <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" Width="90px" />
+       &nbsp;&nbsp;&nbsp;
+       <asp:Button ID="BookRoomButton" runat="server" OnClick="BookRoomButton_Click" Text="Book Room" Width="128px" />
        <br />
        <asp:RangeValidator ID="CheckInValidator" runat="server" ControlToValidate="checkInTextBox" ErrorMessage="RangeValidator" ForeColor="Red" MaximumValue="3000-01-1" Type="Date">Please type a valid Check-In Date: yyyy-MM-dd</asp:RangeValidator>
        <br />
