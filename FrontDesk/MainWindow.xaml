@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button Name="editbutton" Content="Edit" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Label Content="Reservation" HorizontalAlignment="Left" Margin="24,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.718,-0.242"/>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>
