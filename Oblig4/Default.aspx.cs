@@ -16,6 +16,8 @@ namespace Oblig4
         String SelectedSize = "";
         int SelectedBeds = 0;
         String selectedPriceRange = "";
+        String selectedcheckin = "";
+        String selectedcheckout = "";
         List<Reservations> reservations = new List<Reservations>();
 
 
@@ -27,7 +29,7 @@ namespace Oblig4
 
             //Tidligeste du kan sjekke ut er dagen etter i dag
             CheckOutValidator.MinimumValue = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
-            var rooms = db.Room.OrderBy(r => r.roomnumber).ToList();
+            var rooms = db.Room.Where(r => r.Available == true).OrderBy(r => r.roomnumber).ToList();
             GridView1.DataSource = db.Room.Local;
             GridView1.DataBind();
 
@@ -95,21 +97,26 @@ namespace Oblig4
 
         protected void fraDatoTekstBox_TextChanged(object sender, EventArgs e)
         {
+            selectedcheckin = checkInTextBox.Text;
             Validate();
         }
 
         protected void tilDatoTekstBox_TextChanged(object sender, EventArgs e)
         {
+            selectedcheckout = checkOutTextBox.Text;    
             Validate();
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
-            if (SelectedBeds != 0 && selectedPriceRange != "" && SelectedSize != "")
+            if (SelectedBeds != 0 && selectedPriceRange != "" && SelectedSize != "" && selectedcheckin != "" && selectedcheckout!= "")
             {
 
                 int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
                 int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
+
+           
+
 
                 var selectedRooms = from room in db.Room
                                     where room.size == SelectedSize
@@ -120,7 +127,8 @@ namespace Oblig4
                                     select room;
 
 
-                GridView1.DataSource = selectedRooms.ToList();
+
+                GridView1.DataSource = selectedRooms;
                 GridView1.DataBind();
 
                 bedsDropDownList.SelectedIndex = 0;
@@ -186,7 +194,8 @@ namespace Oblig4
                 checkOutTextBox.Text = "";
                  RoomTextBox.Text = "";   
                 //update gridview
-                GridView1.DataSource = db.Room.Local;
+                var availableRooms = db.Room.Where(r => r.Available == true).ToList();
+                GridView1.DataSource = availableRooms;
                 GridView1.DataBind();
                 errorMessage.Visible = false;
             }
