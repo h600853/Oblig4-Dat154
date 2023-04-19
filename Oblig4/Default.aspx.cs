@@ -100,13 +100,17 @@ namespace Oblig4
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
+            var selectedRooms = from room in db.Room
+                                where room.Available == true
+                                select room;
+
             if (SelectedBeds != 0 && selectedPriceRange != "" && SelectedSize != "")
             {
 
                 int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
                 int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
 
-                var selectedRooms = from room in db.Room
+                selectedRooms = from room in db.Room
                                     where room.size == SelectedSize
                                     where room.numberofbeds == SelectedBeds
                                     where room.price >= minPrice
@@ -115,13 +119,31 @@ namespace Oblig4
                                     select room;
 
 
-                GridView1.DataSource = selectedRooms.ToList();
-                GridView1.DataBind();
-
-                bedsDropDownList.SelectedIndex = 0;
-                sizeDropDownList.SelectedIndex = 0;
-                DropDownList3.SelectedIndex = 0;
+                
             }
+            if (SelectedBeds != 0)
+            {
+                selectedRooms = selectedRooms.Where(Room => Room.numberofbeds == SelectedBeds);
+
+            }
+            if (SelectedSize != "")
+            {
+                selectedRooms = selectedRooms.Where(Room => Room.size == SelectedSize);
+            }
+            if (selectedPriceRange != "")
+            {
+                int minPrice = int.Parse(selectedPriceRange.Split('-')[0]);
+                int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
+
+                selectedRooms = selectedRooms.Where(Room => Room.price >= minPrice && Room.price <= maxPrice);
+            }
+
+            GridView1.DataSource = selectedRooms.ToList();
+            GridView1.DataBind();
+
+            bedsDropDownList.SelectedIndex = 0;
+            sizeDropDownList.SelectedIndex = 0;
+            DropDownList3.SelectedIndex = 0;
 
 
         }
