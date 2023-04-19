@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,7 +16,7 @@ namespace Oblig4
         String SelectedSize = "";
         int SelectedBeds = 0;
         String selectedPriceRange = "";
-
+        List<Reservations> reservations = new List<Reservations>();
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -60,8 +61,12 @@ namespace Oblig4
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+            //check if user is logged in
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+        
 
             //Kan tidligest Booke i dag
             CheckInValidator.MinimumValue = DateTime.Now.ToString("yyyy-MM-dd");
@@ -144,15 +149,30 @@ namespace Oblig4
         protected void BookRoomButton_Click(object sender, EventArgs e)
         {
             var roomnumber = int.Parse(RoomTextBox.Text);
+            string username = (string)Session["username"];
+            string password = (string)Session["password"];
             if (RoomNumberExsist(roomnumber))
             {
+                //get user from username and passord 
+                var user = db.Users.Where(u => u.username == username && u.password == password).FirstOrDefault();
           
                 //make a new reservation
                 Reservations reservation = new Reservations();
                 reservation.FromDate = checkInTextBox.Text;
                 reservation.ToDate = checkOutTextBox.Text;
                 reservation.Room = int.Parse(RoomTextBox.Text);
-                reservation.Person = 1;
+                reservation.Person = user.id;
+                //save in session
+                List<Oblig4.Reservations> reservations = (List<Oblig4.Reservations>)Session["reservations"];
+                if (reservations == null)
+                {
+               
+                    reservations = new List<Oblig4.Reservations>();
+                }
+
+                reservations.Add(reservation);           
+                Session["reservations"] = reservations;
+                
                 
                 //save in database
                 db.Reservations.Add(reservation);
@@ -161,6 +181,10 @@ namespace Oblig4
             var room = db.Room.Where(r => r.roomnumber == roomnumber).FirstOrDefault();
                 room.Available = false;
                 db.SaveChanges();
+                //clear search fields
+                checkInTextBox.Text = "";
+                checkOutTextBox.Text = "";
+                 RoomTextBox.Text = "";   
                 //update gridview
                 GridView1.DataSource = db.Room.Local;
                 GridView1.DataBind();

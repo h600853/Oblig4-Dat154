@@ -1,9 +1,25 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Oblig4.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main aria-labelledby="title">
-        <h2 id="title"><%: Title %>.</h2>
-        <h3>Your application description page.</h3>
-        <p>Use this area to provide additional information.</p>
-    </main>
+  
+    <%
+      
+        List<Oblig4.Reservations> reservations = (List<Oblig4.Reservations>)Session["reservations"];
+        //check if has made a reservation
+        if(reservations == null)
+            {
+            Response.Redirect("~/Default.aspx");
+            }
+        %>
+
+<h2>Your Reservations: </h2>
+
+<% foreach (Oblig4.Reservations reservation in reservations) { %>
+ 
+    <p>Reservation details:</p>
+    <p> Room number:  <%= reservation.Room %></p>
+    <p>Check in: <%= reservation.FromDate %></p>
+    <p>Check out: <%= reservation.ToDate %></p>
+
+<% } %>
 </asp:Content>
