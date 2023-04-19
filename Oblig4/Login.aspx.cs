@@ -57,6 +57,8 @@ namespace Oblig4
 
             if (IsValid && UserExsist(username, password))
             {
+                Session["username"] = username;
+                Session["password"] = password;
                 Response.Redirect("~/Default.aspx");
             }
             else
