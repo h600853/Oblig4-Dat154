@@ -12,13 +12,13 @@ namespace Oblig4
     using System;
     using System.Collections.Generic;
     
-    public partial class Reservation
+    public partial class Reservations
     {
         public int id { get; set; }
         public string FromDate { get; set; }
         public string ToDate { get; set; }
-        public int Person { get; set; }
-        public int Room { get; set; }
+        public Nullable<int> Person { get; set; }
+        public Nullable<int> Room { get; set; }
     
         public virtual Users Users { get; set; }
         public virtual Room Room1 { get; set; }

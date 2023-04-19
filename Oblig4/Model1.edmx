@@ -5,15 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MinDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Reservation">
+        <EntityType Name="Reservations">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="FromDate" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="ToDate" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Person" Type="int" Nullable="false" />
-          <Property Name="Room" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromDate" Type="varchar" MaxLength="255" />
+          <Property Name="ToDate" Type="varchar" MaxLength="255" />
+          <Property Name="Person" Type="int" />
+          <Property Name="Room" Type="int" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -33,41 +33,41 @@
           <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Reservati__Perso__6477ECF3">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+        <Association Name="FK__Reservati__Perso__68487DD7">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Reservation">
+            <Dependent Role="Reservations">
               <PropertyRef Name="Person" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservatio__Room__656C112C">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+        <Association Name="FK__Reservatio__Room__693CA210">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
               <PropertyRef Name="roomnumber" />
             </Principal>
-            <Dependent Role="Reservation">
+            <Dependent Role="Reservations">
               <PropertyRef Name="Room" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MinDatabaseModelStoreContainer">
-          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Reservati__Perso__6477ECF3" Association="Self.FK__Reservati__Perso__6477ECF3">
+          <AssociationSet Name="FK__Reservati__Perso__68487DD7" Association="Self.FK__Reservati__Perso__68487DD7">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservatio__Room__656C112C" Association="Self.FK__Reservatio__Room__656C112C">
+          <AssociationSet Name="FK__Reservatio__Room__693CA210" Association="Self.FK__Reservatio__Room__693CA210">
             <End Role="Room" EntitySet="Room" />
-            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -82,34 +82,22 @@
           <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="numberofbeds" Type="Int32" />
           <Property Name="price" Type="Int32" />
-          <NavigationProperty Name="Reservation" Relationship="MinDatabaseModel.FK__Reservatio__Room__656C112C" FromRole="Room" ToRole="Reservation" />
           <Property Name="Available" Type="Boolean" />
+          <NavigationProperty Name="Reservations" Relationship="MinDatabaseModel.FK__Reservatio__Room__693CA210" FromRole="Room" ToRole="Reservations" />
         </EntityType>
         <EntityContainer Name="MinDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Room" EntityType="Self.Room" />
-          <EntitySet Name="Reservation" EntityType="MinDatabaseModel.Reservation" />
           <EntitySet Name="Users" EntityType="MinDatabaseModel.Users" />
-          <AssociationSet Name="FK__Reservati__Perso__6477ECF3" Association="MinDatabaseModel.FK__Reservati__Perso__6477ECF3">
+          <EntitySet Name="Reservations" EntityType="MinDatabaseModel.Reservations" />
+          <AssociationSet Name="FK__Reservati__Perso__68487DD7" Association="MinDatabaseModel.FK__Reservati__Perso__68487DD7">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservatio__Room__656C112C" Association="MinDatabaseModel.FK__Reservatio__Room__656C112C">
+          <AssociationSet Name="FK__Reservatio__Room__693CA210" Association="MinDatabaseModel.FK__Reservatio__Room__693CA210">
             <End Role="Room" EntitySet="Room" />
-            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Reservation">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="FromDate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ToDate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Person" Type="Int32" Nullable="false" />
-          <Property Name="Room" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="MinDatabaseModel.FK__Reservati__Perso__6477ECF3" FromRole="Reservation" ToRole="Users" />
-          <NavigationProperty Name="Room1" Relationship="MinDatabaseModel.FK__Reservatio__Room__656C112C" FromRole="Reservation" ToRole="Room" />
-        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
@@ -117,28 +105,40 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservation" Relationship="MinDatabaseModel.FK__Reservati__Perso__6477ECF3" FromRole="Users" ToRole="Reservation" />
+          <NavigationProperty Name="Reservations" Relationship="MinDatabaseModel.FK__Reservati__Perso__68487DD7" FromRole="Users" ToRole="Reservations" />
         </EntityType>
-        <Association Name="FK__Reservati__Perso__6477ECF3">
-          <End Type="MinDatabaseModel.Users" Role="Users" Multiplicity="1" />
-          <End Type="MinDatabaseModel.Reservation" Role="Reservation" Multiplicity="*" />
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ToDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Person" Type="Int32" />
+          <Property Name="Room" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="MinDatabaseModel.FK__Reservati__Perso__68487DD7" FromRole="Reservations" ToRole="Users" />
+          <NavigationProperty Name="Room1" Relationship="MinDatabaseModel.FK__Reservatio__Room__693CA210" FromRole="Reservations" ToRole="Room" />
+        </EntityType>
+        <Association Name="FK__Reservati__Perso__68487DD7">
+          <End Type="MinDatabaseModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="MinDatabaseModel.Reservations" Role="Reservations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Reservation">
+            <Dependent Role="Reservations">
               <PropertyRef Name="Person" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservatio__Room__656C112C">
-          <End Type="MinDatabaseModel.Room" Role="Room" Multiplicity="1" />
-          <End Type="MinDatabaseModel.Reservation" Role="Reservation" Multiplicity="*" />
+        <Association Name="FK__Reservatio__Room__693CA210">
+          <End Type="MinDatabaseModel.Room" Role="Room" Multiplicity="0..1" />
+          <End Type="MinDatabaseModel.Reservations" Role="Reservations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
               <PropertyRef Name="roomnumber" />
             </Principal>
-            <Dependent Role="Reservation">
+            <Dependent Role="Reservations">
               <PropertyRef Name="Room" />
             </Dependent>
           </ReferentialConstraint>
@@ -160,22 +160,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reservation">
-            <EntityTypeMapping TypeName="MinDatabaseModel.Reservation">
-              <MappingFragment StoreEntitySet="Reservation">
-                <ScalarProperty Name="Room" ColumnName="Room" />
-                <ScalarProperty Name="Person" ColumnName="Person" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MinDatabaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="MinDatabaseModel.Reservations">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="34e06c2d63f4441f93f58dad7ca636cf" Name="Diagram1">
         <EntityTypeShape EntityType="MinDatabaseModel.Room" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MinDatabaseModel.Reservation" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="MinDatabaseModel.Users" Width="1.5" PointX="0.75" PointY="4" />
-        <AssociationConnector Association="MinDatabaseModel.FK__Reservati__Perso__6477ECF3" />
-        <AssociationConnector Association="MinDatabaseModel.FK__Reservatio__Room__656C112C" />
+        <EntityTypeShape EntityType="MinDatabaseModel.Reservations" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="MinDatabaseModel.FK__Reservati__Perso__68487DD7" />
+        <AssociationConnector Association="MinDatabaseModel.FK__Reservatio__Room__693CA210" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

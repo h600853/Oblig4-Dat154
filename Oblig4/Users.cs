@@ -17,7 +17,7 @@ namespace Oblig4
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.Reservation = new HashSet<Reservation>();
+            this.Reservations = new HashSet<Reservations>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace Oblig4
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservation { get; set; }
+        public virtual ICollection<Reservations> Reservations { get; set; }
     }
 }
