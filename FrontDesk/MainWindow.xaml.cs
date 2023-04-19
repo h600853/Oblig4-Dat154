@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace FrontDesk
 {
@@ -25,9 +26,9 @@ namespace FrontDesk
 
         }
 
-        public void ListView_SelectionChanged(object sender, RoutedEvent e)
+        public void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            // Your event handling code here
         }
 
 
