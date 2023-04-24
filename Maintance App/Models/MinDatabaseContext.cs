@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace FrontDesk.Models;
+namespace Maintance_App.Models;
 
 public partial class MinDatabaseContext : DbContext
 {
@@ -15,9 +15,15 @@ public partial class MinDatabaseContext : DbContext
     {
     }
 
+    public virtual DbSet<Cleaning> Cleanings { get; set; }
+
+    public virtual DbSet<Maintenance> Maintenances { get; set; }
+
     public virtual DbSet<Reservation> Reservations { get; set; }
 
     public virtual DbSet<Room> Rooms { get; set; }
+
+    public virtual DbSet<Service> Services { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -27,6 +33,50 @@ public partial class MinDatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Cleaning>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Cleaning__3213E83F2FFD9F5A");
+
+            entity.ToTable("Cleaning");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Request)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("request");
+            entity.Property(e => e.Room).HasColumnName("room");
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("status");
+
+            entity.HasOne(d => d.RoomNavigation).WithMany(p => p.Cleanings)
+                .HasForeignKey(d => d.Room)
+                .HasConstraintName("FK__Cleaning__room__6FE99F9F");
+        });
+
+        modelBuilder.Entity<Maintenance>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Maintena__3213E83F04948223");
+
+            entity.ToTable("Maintenance");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Request)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("request");
+            entity.Property(e => e.Room).HasColumnName("room");
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("status");
+
+            entity.HasOne(d => d.RoomNavigation).WithMany(p => p.Maintenances)
+                .HasForeignKey(d => d.Room)
+                .HasConstraintName("FK__Maintenanc__room__72C60C4A");
+        });
+
         modelBuilder.Entity<Reservation>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Reservat__3213E83F90AC9DD5");
@@ -63,6 +113,28 @@ public partial class MinDatabaseContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("size");
+        });
+
+        modelBuilder.Entity<Service>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Service__3213E83F56C9D1C9");
+
+            entity.ToTable("Service");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Request)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("request");
+            entity.Property(e => e.Room).HasColumnName("room");
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("status");
+
+            entity.HasOne(d => d.RoomNavigation).WithMany(p => p.Services)
+                .HasForeignKey(d => d.Room)
+                .HasConstraintName("FK__Service__room__75A278F5");
         });
 
         modelBuilder.Entity<User>(entity =>

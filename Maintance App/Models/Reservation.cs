@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FrontDesk.Models;
+namespace Maintance_App.Models;
 
 public partial class Reservation
 {

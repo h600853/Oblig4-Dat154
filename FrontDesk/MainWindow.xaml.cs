@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using FrontDesk.Models;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace FrontDesk
@@ -15,14 +16,7 @@ namespace FrontDesk
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /**
-            Editor ed = new(dx)
-            {
-                dx = dx;
-            };
-
-        editor.Show();
-            **/
+          
 
         }
 
