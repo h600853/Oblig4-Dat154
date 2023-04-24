@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oblig4", "Oblig4\Oblig4.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDesk", "FrontDesk\FrontDesk.csproj", "{930911E2-5918-4E9C-B7C6-1DCDABB8EF8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintance App", "Maintance App\Maintance App.csproj", "{59749C6F-5DEE-417A-8499-1891CC0D676E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaintanceApp", "Maintance App\MaintanceApp.csproj", "{59749C6F-5DEE-417A-8499-1891CC0D676E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
