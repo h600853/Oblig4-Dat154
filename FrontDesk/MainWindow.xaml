@@ -7,15 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Name="editbutton" Content="Edit" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Label Content="Reservation" HorizontalAlignment="Left" Margin="24,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.718,-0.242"/>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListView_SelectionChanged">
+        <Button Name="editbutton" Content="Edit" HorizontalAlignment="Left" Margin="311,7,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <ListView Name="reservationList"  d:ItemsSource="{Binding}" SelectionChanged="ListView_SelectionChanged" Margin="0,35,0,-35">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="Id" DisplayMemberBinding="{Binding Path=Id}" />
+                        <GridViewColumn Width="75" Header="From Date" DisplayMemberBinding="{Binding Path=FromDate}" />
+                        <GridViewColumn Width="75" Header="To Date" DisplayMemberBinding="{Binding Path=ToDate}" />
+                        <GridViewColumn Width="75" Header="Room" DisplayMemberBinding="{Binding Path=RoomNumber}" />
+                        <GridViewColumn Width="75" Header="User" DisplayMemberBinding="{Binding Path=Username}" />
+                    </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox Name="searchField" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="153,7,0,0" VerticalAlignment="Top" Click="Search_Button_Click"/>
 
     </Grid>
 </Window>
