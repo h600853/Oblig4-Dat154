@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oblig4", "Oblig4\Oblig4.csproj", "{1F7057EF-EEB8-4839-BA5D-196D4F747109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontDesk", "FrontDesk\FrontDesk.csproj", "{930911E2-5918-4E9C-B7C6-1DCDABB8EF8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDesk", "FrontDesk\FrontDesk.csproj", "{930911E2-5918-4E9C-B7C6-1DCDABB8EF8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintance App", "Maintance App\Maintance App.csproj", "{59749C6F-5DEE-417A-8499-1891CC0D676E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{930911E2-5918-4E9C-B7C6-1DCDABB8EF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{930911E2-5918-4E9C-B7C6-1DCDABB8EF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{930911E2-5918-4E9C-B7C6-1DCDABB8EF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59749C6F-5DEE-417A-8499-1891CC0D676E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59749C6F-5DEE-417A-8499-1891CC0D676E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59749C6F-5DEE-417A-8499-1891CC0D676E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59749C6F-5DEE-417A-8499-1891CC0D676E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
