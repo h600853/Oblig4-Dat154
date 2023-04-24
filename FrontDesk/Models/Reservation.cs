@@ -7,15 +7,15 @@ public partial class Reservation
 {
     public int Id { get; set; }
 
-    public string FromDate { get; set; } = null!;
+    public string? FromDate { get; set; }
 
-    public string ToDate { get; set; } = null!;
+    public string? ToDate { get; set; }
 
-    public int Person { get; set; }
+    public int? Person { get; set; }
 
-    public int Room { get; set; }
+    public int? Room { get; set; }
 
-    public virtual User PersonNavigation { get; set; } = null!;
+    public virtual User? PersonNavigation { get; set; }
 
-    public virtual Room RoomNavigation { get; set; } = null!;
+    public virtual Room? RoomNavigation { get; set; }
 }
