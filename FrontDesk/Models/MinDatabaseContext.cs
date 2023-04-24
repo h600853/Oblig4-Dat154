@@ -29,13 +29,9 @@ public partial class MinDatabaseContext : DbContext
     {
         modelBuilder.Entity<Reservation>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Reservat__3213E83F2B18BBD4");
+            entity.HasKey(e => e.Id).HasName("PK__Reservat__3213E83F90AC9DD5");
 
-            entity.ToTable("Reservation");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.FromDate)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -45,13 +41,11 @@ public partial class MinDatabaseContext : DbContext
 
             entity.HasOne(d => d.PersonNavigation).WithMany(p => p.Reservations)
                 .HasForeignKey(d => d.Person)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Reservati__Perso__6477ECF3");
+                .HasConstraintName("FK__Reservati__Perso__68487DD7");
 
             entity.HasOne(d => d.RoomNavigation).WithMany(p => p.Reservations)
                 .HasForeignKey(d => d.Room)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Reservatio__Room__656C112C");
+                .HasConstraintName("FK__Reservatio__Room__693CA210");
         });
 
         modelBuilder.Entity<Room>(entity =>
