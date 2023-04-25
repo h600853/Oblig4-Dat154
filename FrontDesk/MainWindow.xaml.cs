@@ -35,8 +35,20 @@ namespace FrontDesk
             datacontext.Rooms.Load();
             datacontext.Users.Load();
 
+            LoadReservations();
+
 
         }
+
+        private void LoadReservations()
+        {
+            using (var context = new MinDatabaseContext())
+            {
+                var reservations = context.Reservations.ToList();
+                reservationList.ItemsSource = reservations;
+            }
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
