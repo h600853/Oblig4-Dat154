@@ -41,12 +41,12 @@ public partial class MinDatabaseContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Request)
-                .HasMaxLength(1)
+                .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("request");
             entity.Property(e => e.Room).HasColumnName("room");
             entity.Property(e => e.Status)
-                .HasMaxLength(1)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("status");
 
@@ -63,12 +63,12 @@ public partial class MinDatabaseContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Request)
-                .HasMaxLength(1)
+                .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("request");
             entity.Property(e => e.Room).HasColumnName("room");
             entity.Property(e => e.Status)
-                .HasMaxLength(1)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("status");
 
@@ -123,12 +123,12 @@ public partial class MinDatabaseContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Request)
-                .HasMaxLength(1)
+                .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("request");
             entity.Property(e => e.Room).HasColumnName("room");
             entity.Property(e => e.Status)
-                .HasMaxLength(1)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("status");
 

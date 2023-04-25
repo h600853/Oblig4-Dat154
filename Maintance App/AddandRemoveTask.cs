@@ -1,13 +1,4 @@
 ﻿using Maintance_App.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Maintance_App
 {
@@ -50,6 +41,9 @@ namespace Maintance_App
                         ct.Request = request;
                         dx.Cleanings.Add(ct);
                         dx.SaveChanges();
+                        textBox2.Text = "";
+                        richTextBox1.Text = "";
+                        comboBox1.SelectedIndex = -1;
                     }
                     break;
                 case "Maintenance":
@@ -61,6 +55,9 @@ namespace Maintance_App
                         mt.Request = request;
                         dx.Maintenances.Add(mt);
                         dx.SaveChanges();
+                        textBox2.Text = "";
+                        richTextBox1.Text = "";
+                        comboBox1.SelectedIndex = -1;
                     }
                     break;
                 case "Service":
@@ -72,9 +69,17 @@ namespace Maintance_App
                         st.Request = request;
                         dx.Services.Add(st);
                         dx.SaveChanges();
+                        textBox2.Text = "";
+                        richTextBox1.Text = "";
+                        comboBox1.SelectedIndex = -1;
+
                     }
                     break;
                 default:
+                    textBox2.Text = "";
+                    richTextBox1.Text = "";
+                    comboBox1.SelectedIndex
+                        = -1;
                     break;
 
             }
@@ -87,41 +92,50 @@ namespace Maintance_App
             switch (category)
             {
                 case "Cleaning":
-                    if(id != 0)
+                    if (id != 0)
                     {
 
-                    Cleaning? ct = dx.Cleanings.Find(id);
-                    if (ct != null)
-                    {
-                        dx.Cleanings.Remove(ct);
-                        dx.SaveChanges();
-                    }
+                        Cleaning? ct = dx.Cleanings.Find(id);
+                        if (ct != null)
+                        {
+                            dx.Cleanings.Remove(ct);
+                            dx.SaveChanges();
+                            textBox1.Text = "";
+                            comboBox1.SelectedIndex = -1;
+                        }
                     }
                     break;
                 case "Maintenance":
                     if (id != 0)
                     {
-                    Maintenance? mt = dx.Maintenances.Find(id);
-                    if (mt != null)
-                    {
-                        dx.Maintenances.Remove(mt);
-                        dx.SaveChanges();
-                    }
+                        Maintenance? mt = dx.Maintenances.Find(id);
+                        if (mt != null)
+                        {
+                            dx.Maintenances.Remove(mt);
+                            dx.SaveChanges();
+                            textBox1.Text = "";
+                            comboBox1.SelectedIndex = -1;
+                        }
                     }
                     break;
                 case "Service":
-                    if(id != 0)
+                    if (id != 0)
                     {
 
-                    Service? st = dx.Services.Find(id);
-                    if (st != null)
-                    {
-                        dx.Services.Remove(st);
-                        dx.SaveChanges();
-                    }
+                        Service? st = dx.Services.Find(id);
+                        if (st != null)
+                        {
+                            dx.Services.Remove(st);
+                            dx.SaveChanges();
+                            textBox1.Text = "";
+                            comboBox1.SelectedIndex = -1;
+                        }
                     }
                     break;
                 default:
+                    textBox1.Text = "";
+                    comboBox1.SelectedIndex = -1;
+
                     break;
             }
 
@@ -139,7 +153,10 @@ namespace Maintance_App
         //Id
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            id = int.Parse(textBox1.Text);
+            if (textBox1.Text != "")
+            {
+                id = int.Parse(textBox1.Text);
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -150,7 +167,11 @@ namespace Maintance_App
         //Roomnumber
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            roomnumber = int.Parse(textBox2.Text);
+            if (textBox2.Text != "")
+            {
+                roomnumber = int.Parse(textBox2.Text);
+            }
+
         }
     }
 }
