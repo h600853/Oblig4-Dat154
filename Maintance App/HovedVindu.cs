@@ -15,6 +15,8 @@ namespace Maintance_App
             this.serviceButtonPressed = serviceButtonPressed;
             this.cleaningButtonPressed = cleaningButtonPressed;
             this.maintananceButtonPressed = maintananceButtonPressed;
+
+            //Setter GridViewet til å skalere med vinduet
             tasksGridView.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
 
         }
@@ -26,7 +28,6 @@ namespace Maintance_App
 
 
             //Display service Tasks when service button is pressed
-
             if (serviceButtonPressed)
             {
                 List<Service> serviceTasks = context.Services.ToList();
