@@ -203,6 +203,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Todo.txt" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

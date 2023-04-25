@@ -57,6 +57,9 @@ namespace Oblig4
             sizeDropDownList.SelectedIndexChanged += SizeDropDownList_SelectedIndexChanged;
             bedsDropDownList.SelectedIndexChanged += BedsDropDownList_SelectedIndexChanged;
             DropDownList3.SelectedIndexChanged += DropDownList3_SelectedIndexChanged;
+
+
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -111,15 +114,15 @@ namespace Oblig4
                 int maxPrice = int.Parse(selectedPriceRange.Split('-')[1]);
 
                 selectedRooms = from room in db.Room
-                                    where room.size == SelectedSize
-                                    where room.numberofbeds == SelectedBeds
-                                    where room.price >= minPrice
-                                    where room.price <= maxPrice
-                                    where room.Available == true
-                                    select room;
+                                where room.size == SelectedSize
+                                where room.numberofbeds == SelectedBeds
+                                where room.price >= minPrice
+                                where room.price <= maxPrice
+                                where room.Available == true
+                                select room;
 
 
-                
+
             }
             if (SelectedBeds != 0)
             {
@@ -168,19 +171,19 @@ namespace Oblig4
             var roomnumber = int.Parse(RoomTextBox.Text);
             if (RoomNumberExsist(roomnumber))
             {
-          
+
                 //make a new reservation
                 Reservations reservation = new Reservations();
                 reservation.FromDate = checkInTextBox.Text;
                 reservation.ToDate = checkOutTextBox.Text;
                 reservation.Room = int.Parse(RoomTextBox.Text);
                 reservation.Person = 1;
-                
+
                 //save in database
                 db.Reservations.Add(reservation);
                 db.SaveChanges();
                 //update room to unavailable
-            var room = db.Room.Where(r => r.roomnumber == roomnumber).FirstOrDefault();
+                var room = db.Room.Where(r => r.roomnumber == roomnumber).FirstOrDefault();
                 room.Available = false;
                 db.SaveChanges();
                 //update gridview
