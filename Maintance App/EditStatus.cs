@@ -16,5 +16,20 @@ namespace Maintance_App
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
