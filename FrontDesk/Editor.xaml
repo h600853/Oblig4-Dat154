@@ -14,15 +14,17 @@
         <Label Content="ID" HorizontalAlignment="Left" Margin="37,20,0,0" VerticalAlignment="Top"/>
         <Label Content="From date" HorizontalAlignment="Left" Margin="199,20,0,0" VerticalAlignment="Top"/>
         <Label Content="To date" HorizontalAlignment="Left" Margin="347,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.005,0.525"/>
-        <Label Content="Room" HorizontalAlignment="Left" Margin="522,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="Room id
+               " HorizontalAlignment="Left" Margin="522,20,0,0" VerticalAlignment="Top"/>
         <TextBox Name="idtextbox" HorizontalAlignment="Left" Margin="0,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="fromdatetextbox" HorizontalAlignment="Left" Margin="166,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="todatetextbox" HorizontalAlignment="Left" Margin="319,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="roomtextbox" HorizontalAlignment="Left" Margin="483,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Name="bAdd" Content="Add" HorizontalAlignment="Left" Margin="145,85,0,0" VerticalAlignment="Top" Width="55"/>
         <Button Name="bDelete" Content="Delete" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" Width="78"/>
-        <ComboBox Name="roomcombobox" HorizontalAlignment="Left" Margin="639,47,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Select room number" HorizontalAlignment="Left" Margin="639,15,0,0" VerticalAlignment="Top"/>
+        <Label Content="User id
+               " HorizontalAlignment="Left" Margin="664,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.689,0.175"/>
+        <TextBox Name="userTextBox" HorizontalAlignment="Left" Margin="644,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

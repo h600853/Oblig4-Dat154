@@ -70,9 +70,14 @@ namespace FrontDesk
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
-            reservationList.DataContext = Reservations.Where(r => r.Id.Equals(searchField.Text));
-
+            var reservations = datacontext.Reservations.Where(r => r.Id.Equals(int.Parse(searchField.Text))).ToList();
+            reservationList.ItemsSource = reservations;
+            searchField.Text = "";
         }
-
+        //Refresh
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LoadReservations();
+        }
     }
 }

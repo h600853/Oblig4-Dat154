@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Name="editbutton" Content="Edit" HorizontalAlignment="Left" Margin="311,7,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Name="editbutton" Content="Edit" HorizontalAlignment="Left" Margin="278,7,0,0" VerticalAlignment="Top" Click="Button_Click" Width="38"/>
         <ListView Name="reservationList"  d:ItemsSource="{Binding}" SelectionChanged="ListView_SelectionChanged" Margin="0,35,0,-35">
             <ListView.View>
                 <GridView>
@@ -23,5 +23,7 @@
         </ListView>
         <TextBox Name="searchField" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="153,7,0,0" VerticalAlignment="Top" Click="Search_Button_Click"/>
+        <Button Content="Refresh
+                " Margin="207,7,0,0" Click="Button_Click_1" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
     </Grid>
 </Window>

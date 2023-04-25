@@ -1,18 +1,7 @@
 ﻿//using FrontDesk.Models;
 using FrontDesk.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FrontDesk
 {
@@ -21,54 +10,52 @@ namespace FrontDesk
     /// </summary>
     public partial class Editor : Window
     {
-      
+
         public MinDatabaseContext Datacontext { get; set; }
 
-         public Editor(MinDatabaseContext datacontext)
-         {
+        public Editor(MinDatabaseContext datacontext)
+        {
             InitializeComponent();
-         }
-         
+            bAdd.Click += bAdd_Click;
+            bDelete.Click += bDelete_Click;
+        }
+
         private void bAdd_Click(object sender, RoutedEventArgs e)
         {
-             Reservation r = new Reservation()
-             {
-                 Id = int.Parse(idtextbox.Text),
-                 FromDate = fromdatetextbox.Text,
-                 ToDate = todatetextbox.Text,
-                 Room = int.Parse(roomtextbox.Text)
-             };
-
-            // Associate the reservation with the selected room
-            int roomNumber = int.Parse(roomcombobox.SelectedValue.ToString());
-            Room room = Datacontext.Rooms.FirstOrDefault(r => r.Roomnumber == roomNumber);
-            if (room != null)
+            Reservation r = new Reservation()
             {
-                room.Reservations.Add(r);
+                FromDate = fromdatetextbox.Text,
+                ToDate = todatetextbox.Text,
+                Room = int.Parse(roomtextbox.Text),
+                Person = int.Parse(userTextBox.Text)
+            };
+
+            if (r != null)
+            {
+                Datacontext.Reservations.Add(r);
+                Datacontext.SaveChanges();
+                idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = userTextBox.Text = "";
             }
 
-            Datacontext.Add(r);
-             Datacontext.SaveChanges();
 
-            idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = "";
-            roomcombobox.SelectedIndex = -1;
+
 
         }
 
         private void bDelete_Click(object sender, RoutedEventArgs e)
         {
             int id = int.Parse(idtextbox.Text);
-             Reservation r = Datacontext.Reservations.Where(r => r.Id == id).First();
+            Reservation r = Datacontext.Reservations.Where(r => r.Id == id).First();
 
-             if(r != null)
-             {
-                 Datacontext.Reservations.Remove(r);
-                 Datacontext.SaveChanges();
+            if (r != null)
+            {
+                Datacontext.Reservations.Remove(r);
+                Datacontext.SaveChanges();
 
-             }
+            }
 
-             idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = "";
-            
+            idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = userTextBox.Text = "";
+
         }
 
     }
