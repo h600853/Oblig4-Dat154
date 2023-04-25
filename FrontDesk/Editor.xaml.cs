@@ -44,7 +44,7 @@ namespace FrontDesk
             Room room = Datacontext.Rooms.FirstOrDefault(r => r.Roomnumber == roomNumber);
             if (room != null)
             {
-                room.Reservations = (ICollection<Reservation>)r;
+                room.Reservations.Add(r);
             }
 
             Datacontext.Add(r);
