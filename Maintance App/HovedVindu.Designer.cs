@@ -32,6 +32,8 @@
             label2 = new Label();
             addOrDeleteButton = new Button();
             editStatusButton = new Button();
+            tasksGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)tasksGridView).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -72,11 +74,23 @@
             editStatusButton.UseVisualStyleBackColor = true;
             editStatusButton.Click += editStatusButton_Click;
             // 
+            // tasksGridView
+            // 
+            tasksGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tasksGridView.Location = new Point(12, 131);
+            tasksGridView.Name = "tasksGridView";
+            tasksGridView.RowHeadersWidth = 62;
+            tasksGridView.RowTemplate.Height = 33;
+            tasksGridView.Size = new Size(595, 307);
+            tasksGridView.TabIndex = 4;
+            tasksGridView.CellContentClick += dataGridView1_CellContentClick;
+            // 
             // HovedVindu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tasksGridView);
             Controls.Add(editStatusButton);
             Controls.Add(addOrDeleteButton);
             Controls.Add(label2);
@@ -84,6 +98,8 @@
             Name = "HovedVindu";
             Text = "Form1";
             Load += HovedVindu_Load;
+            SizeChanged += hovedVindu_SizeChanged;
+            ((System.ComponentModel.ISupportInitialize)tasksGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -94,5 +110,6 @@
         private Label label2;
         private Button addOrDeleteButton;
         private Button editStatusButton;
+        private DataGridView tasksGridView;
     }
 }
