@@ -139,18 +139,18 @@
             label5.AutoSize = true;
             label5.Location = new Point(36, 5);
             label5.Name = "label5";
-            label5.Size = new Size(416, 25);
+            label5.Size = new Size(467, 25);
             label5.TabIndex = 11;
-            label5.Text = "Fill roomnumber, enter task and select type to add.";
+            label5.Text = "Fill roomnumber, enter task and select type to add a task.";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(40, 40);
             label6.Name = "label6";
-            label6.Size = new Size(128, 25);
+            label6.Size = new Size(307, 25);
             label6.TabIndex = 12;
-            label6.Text = "Fill id to delete";
+            label6.Text = "Fill id and select type to delete a task.";
             // 
             // AddandRemoveTask
             // 
