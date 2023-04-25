@@ -43,6 +43,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 29);
             comboBox1.TabIndex = 0;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // SelectStatusLabel
             // 
@@ -65,6 +66,7 @@
             Submit.TabIndex = 2;
             Submit.Text = "Submit";
             Submit.UseVisualStyleBackColor = true;
+            Submit.Click += Submit_Click;
             // 
             // IDLabel
             // 
@@ -83,6 +85,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(107, 29);
             textBox1.TabIndex = 5;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // EditStatus
             // 
