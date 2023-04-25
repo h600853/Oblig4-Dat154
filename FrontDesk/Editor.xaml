@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Editor" Height="153" Width="800">
     <Grid Height="434" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="143*"/>
+            <RowDefinition Height="291*"/>
+        </Grid.RowDefinitions>
         <Label Content="ID" HorizontalAlignment="Left" Margin="37,20,0,0" VerticalAlignment="Top"/>
         <Label Content="From date" HorizontalAlignment="Left" Margin="199,20,0,0" VerticalAlignment="Top"/>
         <Label Content="To date" HorizontalAlignment="Left" Margin="347,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.005,0.525"/>
