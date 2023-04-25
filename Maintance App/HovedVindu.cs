@@ -15,6 +15,8 @@ namespace Maintance_App
             this.serviceButtonPressed = serviceButtonPressed;
             this.cleaningButtonPressed = cleaningButtonPressed;
             this.maintananceButtonPressed = maintananceButtonPressed;
+
+            //Setter GridViewet til å skalere med vinduet
             tasksGridView.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
 
         }
@@ -26,7 +28,6 @@ namespace Maintance_App
 
 
             //Display service Tasks when service button is pressed
-
             if (serviceButtonPressed)
             {
                 List<Service> serviceTasks = context.Services.ToList();
@@ -59,7 +60,7 @@ namespace Maintance_App
         //Redirecter deg til AddandRemoveTask.cs når du trykker på knappen
         private void addOrDelete_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
             AddandRemoveTask addorRemoveTask = new AddandRemoveTask();
             addorRemoveTask.Show();
 
@@ -68,7 +69,7 @@ namespace Maintance_App
         //Redirecter deg til EditStatus.cs når du trykker på knappen
         private void editStatusButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
             EditStatus editStatus = new EditStatus();
             editStatus.Show();
 
@@ -89,6 +90,38 @@ namespace Maintance_App
             tasksGridView.Columns["Request"].Width = columnWidth;
             tasksGridView.Columns["Status"].Width = columnWidth;
             tasksGridView.Columns["Room"].Width = columnWidth;
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            //Display service Tasks when service button is pressed
+
+            if (serviceButtonPressed)
+            {
+                List<Service> serviceTasks = context.Services.ToList();
+                tasksGridView.DataSource = serviceTasks;
+                tasksGridView.Columns.Remove("RoomNavigation");
+
+            }
+
+            //Display maintenance Tasks when maintanance button is pressed
+            if (maintananceButtonPressed)
+            {
+                List<Maintenance> maintenanceTasks = context.Maintenances.ToList();
+                tasksGridView.DataSource = maintenanceTasks;
+                tasksGridView.Columns.Remove("RoomNavigation");
+
+            }
+
+
+            //Display cleaning Tasks when cleaning button is pressed
+            if (cleaningButtonPressed)
+            {
+                List<Cleaning> cleaningTasks = context.Cleanings.ToList();
+                tasksGridView.DataSource = cleaningTasks;
+                tasksGridView.Columns.Remove("RoomNavigation");
+
+            }
         }
     }
 }

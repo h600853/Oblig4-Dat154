@@ -33,6 +33,8 @@
             addOrDeleteButton = new Button();
             editStatusButton = new Button();
             tasksGridView = new DataGridView();
+            refresh = new Button();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)tasksGridView).BeginInit();
             SuspendLayout();
             // 
@@ -85,11 +87,32 @@
             tasksGridView.TabIndex = 4;
             tasksGridView.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // refresh
+            // 
+            refresh.Location = new Point(307, 77);
+            refresh.Name = "refresh";
+            refresh.Size = new Size(112, 34);
+            refresh.TabIndex = 5;
+            refresh.Text = "Refresh";
+            refresh.UseVisualStyleBackColor = true;
+            refresh.Click += refresh_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(321, 27);
+            label3.Name = "label3";
+            label3.Size = new Size(70, 25);
+            label3.TabIndex = 6;
+            label3.Text = "Refresh";
+            // 
             // HovedVindu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(refresh);
             Controls.Add(tasksGridView);
             Controls.Add(editStatusButton);
             Controls.Add(addOrDeleteButton);
@@ -111,5 +134,7 @@
         private Button addOrDeleteButton;
         private Button editStatusButton;
         private DataGridView tasksGridView;
+        private Button refresh;
+        private Label label3;
     }
 }
