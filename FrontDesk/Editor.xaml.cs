@@ -17,7 +17,7 @@ namespace FrontDesk
         {
             InitializeComponent();
             bAdd.Click += bAdd_Click;
-            bDelete.Click += bDelete_Click;
+            //bDelete.Click += bDelete_Click;
         }
 
         private void bAdd_Click(object sender, RoutedEventArgs e)
@@ -31,35 +31,36 @@ namespace FrontDesk
             };
 
             // Associate the reservation with the selected room
-            int roomNumber = int.Parse(roomcombobox.SelectedValue.ToString());
-            Room room = Datacontext.Rooms.FirstOrDefault(r => r.Roomnumber == roomNumber);
-            if (room != null)
-            {
-                Datacontext.Reservations.Add(r);
-                Datacontext.SaveChanges();
-                idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = userTextBox.Text = "";
-            }
+            //int roomNumber = int.Parse(roomcombobox.SelectedValue.ToString());
+            //Room room = Datacontext.Rooms.FirstOrDefault(r => r.Roomnumber == roomNumber);
+            //if (room != null)
+            //{
+            //    Datacontext.Reservations.Add(r);
+            //    Datacontext.SaveChanges();
+            //    idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = userTextBox.Text = "";
+            //}
 
 
 
+
+            //}
+
+            //    private void bDelete_Click(object sender, RoutedEventArgs e)
+            //    {
+            //        int id = int.Parse(idtextbox.Text);
+            //        Reservation r = Datacontext.Reservations.Where(r => r.Id == id).First();
+
+            //        if (r != null)
+            //        {
+            //            Datacontext.Reservations.Remove(r);
+            //            Datacontext.SaveChanges();
+
+            //        }
+
+            //        idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = userTextBox.Text = "";
+
+            //    }
 
         }
-
-        private void bDelete_Click(object sender, RoutedEventArgs e)
-        {
-            int id = int.Parse(idtextbox.Text);
-            Reservation r = Datacontext.Reservations.Where(r => r.Id == id).First();
-
-            if (r != null)
-            {
-                Datacontext.Reservations.Remove(r);
-                Datacontext.SaveChanges();
-
-            }
-
-            idtextbox.Text = fromdatetextbox.Text = todatetextbox.Text = roomtextbox.Text = userTextBox.Text = "";
-
-        }
-
     }
 }
