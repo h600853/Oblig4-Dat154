@@ -15,8 +15,8 @@
                         <GridViewColumn Width="100" Header="Id" DisplayMemberBinding="{Binding Path=Id}" />
                         <GridViewColumn Width="75" Header="From Date" DisplayMemberBinding="{Binding Path=FromDate}" />
                         <GridViewColumn Width="75" Header="To Date" DisplayMemberBinding="{Binding Path=ToDate}" />
-                        <GridViewColumn Width="75" Header="Room" DisplayMemberBinding="{Binding Path=RoomNumber}" />
-                        <GridViewColumn Width="75" Header="User" DisplayMemberBinding="{Binding Path=Username}" />
+                        <GridViewColumn Width="75" Header="Room" DisplayMemberBinding="{Binding Path=RoomNavigation.roomnumber}" />
+                        <GridViewColumn Width="75" Header="User" DisplayMemberBinding="{Binding Path=PersonNavigation.username}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

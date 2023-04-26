@@ -41,7 +41,7 @@ namespace FrontDesk
 
             // Associate the reservation with the selected room
             int roomNumber = int.Parse(roomcombobox.SelectedValue.ToString());
-            Room room = Datacontext.Rooms.FirstOrDefault(r => r.Roomnumber == roomNumber);
+            Room room = Datacontext.Rooms.FirstOrDefault(r => r.roomnumber == roomNumber);
             if (room != null)
             {
                 room.Reservations.Add(r);

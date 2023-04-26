@@ -36,6 +36,7 @@ namespace FrontDesk
             datacontext.Users.Load();
 
             LoadReservations();
+            //LoadRooms();
 
 
         }
@@ -44,10 +45,28 @@ namespace FrontDesk
         {
             using (var context = new MinDatabaseContext())
             {
-                var reservations = context.Reservations.ToList();
+                var reservations = context.Reservations.Include(r => r.RoomNavigation).Include(r => r.PersonNavigation).ToList();
+
                 reservationList.ItemsSource = reservations;
+            
+
+
+
+
             }
+
+            
         }
+
+        //private void LoadRooms()
+        //{
+        //    using (var context = new MinDatabaseContext())
+        //    {
+        //        var rooms = context.Rooms.Select(r => r.roomnumber).ToList();
+        //        reservationList.ItemsSource = rooms;
+        //    }
+
+        //}
 
 
         private void Button_Click(object sender, RoutedEventArgs e)

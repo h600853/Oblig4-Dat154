@@ -51,11 +51,11 @@ public partial class MinDatabaseContext : DbContext
 
         modelBuilder.Entity<Room>(entity =>
         {
-            entity.HasKey(e => e.Roomnumber).HasName("PK__Room__20A5E499B0128DA4");
+            entity.HasKey(e => e.roomnumber).HasName("PK__Room__20A5E499B0128DA4");
 
             entity.ToTable("Room");
 
-            entity.Property(e => e.Roomnumber)
+            entity.Property(e => e.roomnumber)
                 .ValueGeneratedNever()
                 .HasColumnName("roomnumber");
             entity.Property(e => e.Numberofbeds).HasColumnName("numberofbeds");
@@ -68,16 +68,16 @@ public partial class MinDatabaseContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3213E83FD0930459");
+            entity.HasKey(e => e.id).HasName("PK__Users__3213E83FD0930459");
 
-            entity.Property(e => e.Id)
+            entity.Property(e => e.id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Password)
+            entity.Property(e => e.password)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
-            entity.Property(e => e.Username)
+            entity.Property(e => e.username)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("username");

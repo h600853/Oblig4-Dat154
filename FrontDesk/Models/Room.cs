@@ -5,7 +5,7 @@ namespace FrontDesk.Models;
 
 public partial class Room
 {
-    public int Roomnumber { get; set; }
+    public int roomnumber { get; set; }
 
     public string? Size { get; set; }
 
