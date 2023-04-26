@@ -36,6 +36,10 @@
             label3 = new Label();
             button1 = new Button();
             button2 = new Button();
+            label4 = new Label();
+            textBox2 = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -53,11 +57,12 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(69, 31);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(224, 93);
+            label2.Location = new Point(307, 93);
             label2.Name = "label2";
             label2.Size = new Size(90, 25);
             label2.TabIndex = 2;
@@ -66,7 +71,7 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(161, 121);
+            richTextBox1.Location = new Point(246, 121);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(210, 133);
             richTextBox1.TabIndex = 4;
@@ -76,7 +81,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(423, 121);
+            comboBox1.Location = new Point(509, 121);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(182, 33);
             comboBox1.TabIndex = 5;
@@ -85,7 +90,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(455, 89);
+            label3.Location = new Point(542, 93);
             label3.Name = "label3";
             label3.Size = new Size(100, 25);
             label3.TabIndex = 6;
@@ -111,11 +116,51 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(122, 93);
+            label4.Name = "label4";
+            label4.Size = new Size(122, 25);
+            label4.TabIndex = 9;
+            label4.Text = "Roomnumber";
+            label4.Click += label4_Click;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(138, 136);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(86, 31);
+            textBox2.TabIndex = 10;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(36, 5);
+            label5.Name = "label5";
+            label5.Size = new Size(467, 25);
+            label5.TabIndex = 11;
+            label5.Text = "Fill roomnumber, enter task and select type to add a task.";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(40, 40);
+            label6.Name = "label6";
+            label6.Size = new Size(307, 25);
+            label6.TabIndex = 12;
+            label6.Text = "Fill id and select type to delete a task.";
+            // 
             // AddandRemoveTask
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(textBox2);
+            Controls.Add(label4);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label3);
@@ -126,6 +171,7 @@
             Controls.Add(label1);
             Name = "AddandRemoveTask";
             Text = "AddandRemoveTask";
+            Load += AddandRemoveTask_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -140,5 +186,9 @@
         private Label label3;
         private Button button1;
         private Button button2;
+        private Label label4;
+        private TextBox textBox2;
+        private Label label5;
+        private Label label6;
     }
 }

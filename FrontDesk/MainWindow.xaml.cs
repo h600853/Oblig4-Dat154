@@ -16,20 +16,20 @@ namespace FrontDesk
 
         private readonly MinDatabaseContext datacontext = new();
 
-         LocalView<User> Users;
-         LocalView<Reservation> Reservations;
-         LocalView<Room> Rooms;
-        
+        LocalView<User> Users;
+        LocalView<Reservation> Reservations;
+        LocalView<Room> Rooms;
+
 
         public MainWindow()
         {
             InitializeComponent();
 
-             Users = datacontext.Users.Local;
+            Users = datacontext.Users.Local;
 
-             Reservations = datacontext.Reservations.Local;
+            Reservations = datacontext.Reservations.Local;
 
-             Rooms = datacontext.Rooms.Local;
+            Rooms = datacontext.Rooms.Local;
 
             datacontext.Reservations.Load();
             datacontext.Rooms.Load();
@@ -72,14 +72,14 @@ namespace FrontDesk
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-              Editor ed = new(datacontext)
-              {
-                  Datacontext = datacontext
-              };
+            Editor ed = new(datacontext)
+            {
+                Datacontext = datacontext
+            };
 
-              ed.Show();
+            ed.Show();
 
-              
+
         }
 
         public void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -89,8 +89,14 @@ namespace FrontDesk
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
-             reservationList.DataContext = Reservations.Where(r => r.Id.Equals(searchField.Text));
-              
+            var reservations = datacontext.Reservations.Where(r => r.Id.Equals(int.Parse(searchField.Text))).ToList();
+            reservationList.ItemsSource = reservations;
+            searchField.Text = "";
+        }
+        //Refresh
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LoadReservations();
         }
     }
 }
