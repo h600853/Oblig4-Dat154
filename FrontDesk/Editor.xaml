@@ -21,7 +21,7 @@
         <TextBox Name="todatetextbox" HorizontalAlignment="Left" Margin="319,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="roomtextbox" HorizontalAlignment="Left" Margin="483,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Name="bAdd" Content="Add" HorizontalAlignment="Left" Margin="145,85,0,0" VerticalAlignment="Top" Width="55"/>
-        <Button Name="bDelete" Content="Delete" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" Width="78"/>
+        <Button Name="BDelete" Content="Delete" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" Width="78"/>
         <Label Content="User id
                " HorizontalAlignment="Left" Margin="664,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.689,0.175"/>
         <TextBox Name="userTextBox" HorizontalAlignment="Left" Margin="644,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

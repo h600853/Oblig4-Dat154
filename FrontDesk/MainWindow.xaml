@@ -21,7 +21,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="searchField" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="searchField" Text="Id" Foreground="Gray" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="Search_Field_GotFocus" LostFocus="searchField_LostFocus">
+
+        </TextBox>
+
         <Button Content="Search" HorizontalAlignment="Left" Margin="153,7,0,0" VerticalAlignment="Top" Click="Search_Button_Click"/>
 
     </Grid>
