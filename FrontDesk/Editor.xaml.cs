@@ -18,7 +18,9 @@ namespace FrontDesk
             InitializeComponent();
             bAdd.Click += bAdd_Click;
             bDelete.Click += bDelete_Click;
+
         }
+        //Add Reservation
 
         private void bAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -41,7 +43,7 @@ namespace FrontDesk
 
 
         }
-
+        //Delete Reservation
         private void bDelete_Click(object sender, RoutedEventArgs e)
         {
             int id = int.Parse(idtextbox.Text);
