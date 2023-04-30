@@ -23,6 +23,7 @@ namespace Maintance_App
         //        public MinDatabaseContext dx = new();
         MinDatabaseContext dx;
         String taskStatus = "";
+        String selectTask = "";
         int id = 0;
         public EditStatus()
         {
@@ -39,6 +40,10 @@ namespace Maintance_App
             comboBox1.Items.Add("Not done");
             comboBox1.Items.Add("In progress");
             comboBox1.Items.Add("Done");
+
+            comboBox2.Items.Add("Cleaning");
+            comboBox2.Items.Add("Maintenance");
+            comboBox2.Items.Add("Service");
 
             dx = new MinDatabaseContext();
 
@@ -74,24 +79,26 @@ namespace Maintance_App
                     break;
             }
              */
-            switch (comboBox2.Text)
+
+            switch (selectTask) //comboBox2.Text, usikker på hva som skal inne i her //tok ut taskStatus
             {
                 case "Cleaning":
-                    if (id !=0)
-                    {
-                        var cleaning = dx.Cleanings.Where(c => c.Id == id).FirstOrDefault();
-                        cleaning.Status = comboBox1.Text;
-                        dx.SaveChanges();
+                    var cleaning = dx.Cleanings.Where(c => c.Id == id).FirstOrDefault();
+                    cleaning.Status = comboBox1.Text;
+                    dx.SaveChanges();
                         /*
+                    if (id != 0)
+                    {
                         Cleaning? cl = dx.Cleanings.Find(id);
                         if (cl != null)
                         {
                             dx.Cleanings.Update()
                             cleaning.Status = comboBox1.Text;
                             dx.SaveChanges();
+                            comboBox.SelectedIndex = -1;
                         }
-                         */
                     }
+                         */
                     break;
                 case "Maintenance":
                     var maintenance = dx.Maintenances.Where(c => c.Id == id).FirstOrDefault();
@@ -112,7 +119,12 @@ namespace Maintance_App
 
         private void EditStatus_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectTask = comboBox2.Text;
         }
     }
 }
