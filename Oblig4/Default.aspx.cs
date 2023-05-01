@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,7 +16,7 @@ namespace Oblig4
         String SelectedSize = "";
         int SelectedBeds = 0;
         String selectedPriceRange = "";
-
+        List<Reservations> reservations;
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -64,7 +65,11 @@ namespace Oblig4
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            //redirect to login page if not logged in
+            if (Session["username"] == null || Session["password"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             //Kan tidligest Booke i dag
             CheckInValidator.MinimumValue = DateTime.Now.ToString("yyyy-MM-dd");
@@ -169,6 +174,12 @@ namespace Oblig4
         protected void BookRoomButton_Click(object sender, EventArgs e)
         {
             var roomnumber = int.Parse(RoomTextBox.Text);
+            //get username and password from session
+            String username = Session["username"].ToString();
+            String password = Session["password"].ToString();
+            //find user with username and password
+            var user = db.Users.Where(u => u.username == username && u.password == password).FirstOrDefault();
+
             if (RoomNumberExsist(roomnumber))
             {
 
@@ -177,7 +188,7 @@ namespace Oblig4
                 reservation.FromDate = checkInTextBox.Text;
                 reservation.ToDate = checkOutTextBox.Text;
                 reservation.Room = int.Parse(RoomTextBox.Text);
-                reservation.Person = 1;
+                reservation.Person = user.id;
 
                 //save in database
                 db.Reservations.Add(reservation);
@@ -186,10 +197,27 @@ namespace Oblig4
                 var room = db.Room.Where(r => r.roomnumber == roomnumber).FirstOrDefault();
                 room.Available = false;
                 db.SaveChanges();
+                //Retrieve existing reservations list from session
+                List<Reservations> reservations = Session["reservations"] as List<Reservations>;
+                if (reservations == null)
+                {
+                    //If there is no existing list, create a new one
+                    reservations = new List<Reservations>();
+                }
+
+                //Add the new reservation to the list
+                reservations.Add(reservation);
+
+                //Save the updated list back to session
+                Session["reservations"] = reservations;
+
                 //update gridview
                 GridView1.DataSource = db.Room.Local;
                 GridView1.DataBind();
                 errorMessage.Visible = false;
+
+                checkInTextBox.Text = checkOutTextBox.Text = RoomTextBox.Text = "";
+
             }
             else
             {
