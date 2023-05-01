@@ -71,6 +71,8 @@ namespace Maintance_App
                     var cleaning = dx.Cleanings.Where(c => c.Id == id).FirstOrDefault();
                     cleaning.Status = comboBox1.Text;
                     dx.SaveChanges();
+                    comboBox1.SelectedIndex = -1;
+                    comboBox2.SelectedIndex = -1;
                     break;
                 case "Maintenance":
                     var maintenance = dx.Maintenances.Where(c => c.Id == id).FirstOrDefault();
