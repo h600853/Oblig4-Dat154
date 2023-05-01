@@ -41,7 +41,7 @@
             // 
             comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(985, 234);
+            comboBox1.Location = new Point(774, 134);
             comboBox1.Margin = new Padding(5, 6, 5, 6);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(221, 40);
@@ -52,7 +52,7 @@
             // 
             SelectStatusLabel.AutoSize = true;
             SelectStatusLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            SelectStatusLabel.Location = new Point(985, 51);
+            SelectStatusLabel.Location = new Point(774, 60);
             SelectStatusLabel.Margin = new Padding(5, 0, 5, 0);
             SelectStatusLabel.Name = "SelectStatusLabel";
             SelectStatusLabel.Size = new Size(149, 32);
@@ -64,7 +64,7 @@
             Submit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             Submit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Submit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Submit.Location = new Point(1287, 842);
+            Submit.Location = new Point(876, 193);
             Submit.Margin = new Padding(5, 6, 5, 6);
             Submit.Name = "Submit";
             Submit.Size = new Size(177, 92);
@@ -77,7 +77,7 @@
             // 
             IDLabel.AutoSize = true;
             IDLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            IDLabel.Location = new Point(156, 51);
+            IDLabel.Location = new Point(86, 60);
             IDLabel.Margin = new Padding(5, 0, 5, 0);
             IDLabel.Name = "IDLabel";
             IDLabel.Size = new Size(37, 32);
@@ -87,7 +87,7 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(156, 234);
+            textBox1.Location = new Point(86, 135);
             textBox1.Margin = new Padding(5, 6, 5, 6);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(195, 39);
@@ -98,7 +98,7 @@
             // 
             comboBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(562, 234);
+            comboBox2.Location = new Point(414, 134);
             comboBox2.Margin = new Padding(5, 6, 5, 6);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(221, 40);
@@ -108,7 +108,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(562, 60);
+            label1.Location = new Point(414, 60);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(129, 32);
@@ -120,7 +120,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1486, 960);
+            ClientSize = new Size(1075, 311);
             Controls.Add(label1);
             Controls.Add(comboBox2);
             Controls.Add(textBox1);
