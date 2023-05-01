@@ -14,13 +14,6 @@ namespace Maintance_App
 {
     public partial class EditStatus : Form
     {
-        // er id registrert i databasem. Hvis ikke, må det være int id = 0;
-        /*
-        private readonly LocalView<Cleaning> cleanings;
-        private readonly LocalView<Maintenance> maintenances;
-        private readonly LocalView<Service> services;
-         */
-        //        public MinDatabaseContext dx = new();
         readonly MinDatabaseContext dx;
         String taskStatus = "";
         String selectTask = "";
@@ -28,14 +21,6 @@ namespace Maintance_App
         public EditStatus()
         {
             InitializeComponent();
-            /*
-             * cleanings = dx.Cleanings.Local;
-             * maintenances = dx.Maintenances.Local;
-             * services = dx.Services.Local;
-             * dx.Cleanings.Load();
-             * dx.Maintenances.Load();
-             * dx.Services.Load();
-             */
             comboBox1.Items.Add("Not done");
             comboBox1.Items.Add("In progress");
             comboBox1.Items.Add("Done");
@@ -64,8 +49,8 @@ namespace Maintance_App
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            //add to databas
-            switch (selectTask) //comboBox2.Text, usikker på hva som skal inne i her //tok ut taskStatus
+            //add to databae
+            switch (selectTask)
             {
                 case "Cleaning":
                     var cleaning = dx.Cleanings.Where(c => c.Id == id).FirstOrDefault();
@@ -89,7 +74,7 @@ namespace Maintance_App
                     comboBox2.SelectedIndex = -1;
 
                     break;
-                default: // if no category is selected //What should it do then?
+                default: // if no category is selected 
                     textBox1.Text = "";
                     comboBox1.SelectedIndex = -1;
                     break;
