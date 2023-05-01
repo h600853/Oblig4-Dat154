@@ -27,5 +27,7 @@
         <Button Name="bDelete" Content="Delete" HorizontalAlignment="Left" Margin="435,85,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="1.876,0.47"/>
         <Label Name="userIdLabel"  Content="User id" HorizontalAlignment="Left" Margin="675,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.689,0.175"/>
         <TextBox Name="userTextBox" HorizontalAlignment="Left" Margin="644,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="For å slette: Skriv inn ID" HorizontalAlignment="Left" Margin="543,82,0,0" VerticalAlignment="Top"/>
+        <Label Content="For å legge til: Fyll inn alt unntatt id" HorizontalAlignment="Left" Margin="23,82,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
