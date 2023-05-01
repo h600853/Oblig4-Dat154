@@ -85,6 +85,7 @@
             rolleVinduPanel.Name = "rolleVinduPanel";
             rolleVinduPanel.Size = new Size(807, 452);
             rolleVinduPanel.TabIndex = 4;
+            rolleVinduPanel.Paint += rolleVinduPanel_Paint;
             // 
             // RolleVindu
             // 

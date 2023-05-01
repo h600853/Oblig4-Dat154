@@ -60,5 +60,10 @@
             int height = this.Height / 2;
             rolleVinduPanel.Location = new Point(width - rolleVinduPanel.Width / 2, height - rolleVinduPanel.Height / 2);
         }
+
+        private void rolleVinduPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

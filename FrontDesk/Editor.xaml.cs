@@ -60,5 +60,18 @@ namespace FrontDesk
 
         }
 
+
+
+
+
+        private void idtextbox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+
+        private void sizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
     }
 }

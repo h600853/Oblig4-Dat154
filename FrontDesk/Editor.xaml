@@ -6,25 +6,26 @@
         xmlns:local="clr-namespace:FrontDesk"
         mc:Ignorable="d"
         Title="Editor" Height="153" Width="800">
-    <Grid Height="434" VerticalAlignment="Top">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" SizeChanged="sizeChanged">
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="143*"/>
-            <RowDefinition Height="291*"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label Content="ID" HorizontalAlignment="Left" Margin="37,20,0,0" VerticalAlignment="Top"/>
-        <Label Content="From date" HorizontalAlignment="Left" Margin="199,20,0,0" VerticalAlignment="Top"/>
-        <Label Content="To date" HorizontalAlignment="Left" Margin="347,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.005,0.525"/>
-        <Label Content="Room id
-               " HorizontalAlignment="Left" Margin="522,20,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="idtextbox" HorizontalAlignment="Left" Margin="0,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Name="idLabel"  Content="ID" HorizontalAlignment="Left" Margin="38,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.139,0.489"/>
+        <Label Name="checkInDateLabel" Content="Checkin-Date" HorizontalAlignment="Left" Margin="185,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.172,0.719"/>
+        <Label Name ="checkOutLabel"  Content="Checkout-Date" HorizontalAlignment="Left" Margin="336,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.005,0.525"/>
+        <Label Name="roomNrLabel" Content="Room number&#xD;&#xA;" HorizontalAlignment="Left" Margin="500,20,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="idtextbox" HorizontalAlignment="Left" Margin="0,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="idtextbox_TextChanged"/>
         <TextBox Name="fromdatetextbox" HorizontalAlignment="Left" Margin="166,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="todatetextbox" HorizontalAlignment="Left" Margin="319,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="roomtextbox" HorizontalAlignment="Left" Margin="483,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="bAdd" Content="Add" HorizontalAlignment="Left" Margin="145,85,0,0" VerticalAlignment="Top" Width="55"/>
-        <Button Name="bDelete" Content="Delete" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="User id
-               " HorizontalAlignment="Left" Margin="664,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.689,0.175"/>
+        <Button Name="bAdd" Content="Add" HorizontalAlignment="Left" Margin="268,85,0,0" VerticalAlignment="Top" Width="55"/>
+        <Button Name="bDelete" Content="Delete" HorizontalAlignment="Left" Margin="435,85,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="1.876,0.47"/>
+        <Label Name="userIdLabel"  Content="User id" HorizontalAlignment="Left" Margin="675,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.689,0.175"/>
         <TextBox Name="userTextBox" HorizontalAlignment="Left" Margin="644,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-
     </Grid>
 </Window>
