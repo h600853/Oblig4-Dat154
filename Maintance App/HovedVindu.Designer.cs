@@ -35,6 +35,7 @@
             tasksGridView = new DataGridView();
             refresh = new Button();
             label3 = new Label();
+            GoBack = new Button();
             ((System.ComponentModel.ISupportInitialize)tasksGridView).BeginInit();
             SuspendLayout();
             // 
@@ -106,11 +107,24 @@
             label3.TabIndex = 6;
             label3.Text = "Refresh";
             // 
+            // GoBack
+            // 
+            GoBack.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            GoBack.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            GoBack.Location = new Point(676, 404);
+            GoBack.Name = "GoBack";
+            GoBack.Size = new Size(112, 34);
+            GoBack.TabIndex = 7;
+            GoBack.Text = "Back";
+            GoBack.UseVisualStyleBackColor = true;
+            GoBack.Click += GoBack_Click;
+            // 
             // HovedVindu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(GoBack);
             Controls.Add(label3);
             Controls.Add(refresh);
             Controls.Add(tasksGridView);
@@ -136,5 +150,6 @@
         private DataGridView tasksGridView;
         private Button refresh;
         private Label label3;
+        private Button GoBack;
     }
 }

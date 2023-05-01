@@ -121,5 +121,12 @@ namespace Maintance_App
             }
 
         }
+
+        private void GoBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            RolleVindu r1 = new RolleVindu();
+            r1.Show();
+        }
     }
 }
