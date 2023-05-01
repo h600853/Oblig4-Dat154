@@ -94,34 +94,32 @@ namespace Maintance_App
 
         private void refresh_Click(object sender, EventArgs e)
         {
-            //Display service Tasks when service button is pressed
+            //Reload the data from the database
 
+            context = new MinDatabaseContext();
+
+            //Display service Tasks when service button is pressed
             if (serviceButtonPressed)
             {
                 List<Service> serviceTasks = context.Services.ToList();
                 tasksGridView.DataSource = serviceTasks;
                 tasksGridView.Columns.Remove("RoomNavigation");
-
             }
-
             //Display maintenance Tasks when maintanance button is pressed
             if (maintananceButtonPressed)
             {
                 List<Maintenance> maintenanceTasks = context.Maintenances.ToList();
                 tasksGridView.DataSource = maintenanceTasks;
                 tasksGridView.Columns.Remove("RoomNavigation");
-
             }
-
-
             //Display cleaning Tasks when cleaning button is pressed
             if (cleaningButtonPressed)
             {
                 List<Cleaning> cleaningTasks = context.Cleanings.ToList();
                 tasksGridView.DataSource = cleaningTasks;
                 tasksGridView.Columns.Remove("RoomNavigation");
-
             }
+
         }
     }
 }
